@@ -15,6 +15,59 @@ const Canvas = () =>
         const scene = new THREE.Scene()
 
         /**
+         * Objects
+         */
+        // Material
+        const material = new THREE.MeshNormalMaterial({
+            flatShading: true
+        })
+
+        // Meshes
+        const planet = new THREE.Mesh(
+            new THREE.DodecahedronGeometry(1.5, 1),
+            material
+        )
+
+        const moon = new THREE.Mesh(
+            new THREE.IcosahedronGeometry(0.25, 0),
+            material
+        )
+
+        // Moon Orbit Position
+        moon.position.x = 2
+        moon.position.y = 2
+
+        scene.add(planet, moon)
+
+        /**
+         * Particles
+         */
+        // Geometry
+        const particleCount = 150
+        const positions = new Float32Array(particleCount * 3)
+
+        for(let i = 0; i < particleCount; i++)
+        {
+            positions[i * 3 + 0] = (Math.random() - 0.5) * 10
+            positions[i * 3 + 1] = 4 * 0.5 - Math.random() * 4
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 10
+        }
+
+        const particleGeometry = new THREE.BufferGeometry()
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+
+        // Material
+        const particleMaterial = new THREE.PointsMaterial({
+            color: 0xb3c3d4,
+            sizeAttenuation: true,
+            size: 0.025
+        })
+
+        // Points
+        const particle = new THREE.Points(particleGeometry, particleMaterial)
+        scene.add(particle)
+        
+        /**
          * Sizes
          */
         const sizes = 
@@ -24,20 +77,27 @@ const Canvas = () =>
         }
 
         /**
-         * Camera
+         * Camera Group
          */
+        // Group
+        const cameraGroup = new THREE.Group()
+        scene.add(cameraGroup)
+
+        // Base Camera
         const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1 ,100)
-        camera.position.z = 3
-        scene.add(camera)
+        camera.position.z = 6
+        cameraGroup.add(camera)
 
         /**
          * Renderer
          */
         const renderer = new THREE.WebGLRenderer(
             {
-                canvas: canvas
+                canvas: canvas,
+                alpha: true
             }
         )
+        
         renderer.setSize(sizes.width, sizes.height)
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
@@ -60,13 +120,50 @@ const Canvas = () =>
         })
 
         /**
-         * Animate
+         * Cursor
+         */
+        const cursor = {}
+        cursor.x = 0
+        cursor.y = 0
+
+        window.addEventListener('mousemove', (event) =>
+        {
+            cursor.x = event.clientX / sizes.width - 0.5
+            cursor.y = event.clientY / sizes.height - 0.5
+        })
+
+        /**
+         * Animate & Clock
          */
         const clock = new THREE.Clock()
+        let previousTime = 0
 
         const tick = () =>
         {
             const elapsedTime = clock.getElapsedTime()
+            const deltaTime = elapsedTime - previousTime
+            previousTime = elapsedTime
+
+            // Animate Planet
+            planet.rotation.x += deltaTime * 0.1
+            planet.rotation.y += deltaTime * 0.15
+
+            // Animate Moon
+            const moonAngle = elapsedTime * 0.15
+            moon.position.x = Math.cos(moonAngle) * 2.5
+            moon.position.z = Math.sin(moonAngle) * 2.5
+            moon.position.y = Math.cos(moonAngle) * 1.5
+
+            moon.rotation.x += - deltaTime * 0.35
+            moon.rotation.y += - deltaTime * 0.25
+            
+
+            // Animate Camera
+            const parallaxX = cursor.x * 0.5
+            const parallaxY = - cursor.y * 0.5
+
+            cameraGroup.position.x += (parallaxX - cameraGroup.position.x) * 5 * deltaTime
+            cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * 5 * deltaTime
 
             // Renderer
             renderer.render(scene, camera)
