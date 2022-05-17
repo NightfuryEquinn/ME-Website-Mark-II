@@ -32,6 +32,10 @@ const Canvas = () =>
             new THREE.IcosahedronGeometry(0.25, 0),
             material
         )
+        
+        // Planet Position
+        planet.position.x = 0
+        planet.position.y = 0
 
         // Moon Orbit Position
         moon.position.x = 2
@@ -156,7 +160,6 @@ const Canvas = () =>
 
             moon.rotation.x += - deltaTime * 0.35
             moon.rotation.y += - deltaTime * 0.25
-            
 
             // Animate Camera
             const parallaxX = cursor.x * 0.5
