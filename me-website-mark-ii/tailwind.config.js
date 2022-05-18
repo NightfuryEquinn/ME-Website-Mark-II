@@ -16,7 +16,7 @@ module.exports = {
       fontFamily: {
         orbit: ['Orbitron'],
         space: ['"Space Mono"']
-      }
+      },
     },
   },
   plugins: [],

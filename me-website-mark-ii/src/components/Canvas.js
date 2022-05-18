@@ -41,19 +41,19 @@ const Canvas = () =>
         moon.position.x = 2
         moon.position.y = 2
 
-        scene.add(planet, moon)
+        // scene.add(planet, moon)
 
         /**
          * Particles
          */
         // Geometry
-        const particleCount = 150
+        const particleCount = 200
         const positions = new Float32Array(particleCount * 3)
 
         for(let i = 0; i < particleCount; i++)
         {
             positions[i * 3 + 0] = (Math.random() - 0.5) * 10
-            positions[i * 3 + 1] = 4 * 0.5 - Math.random() * 4
+            positions[i * 3 + 1] = 4 * 0.5 - Math.random() * 7.5
             positions[i * 3 + 2] = (Math.random() - 0.5) * 10
         }
 
@@ -168,6 +168,9 @@ const Canvas = () =>
             cameraGroup.position.x += (parallaxX - cameraGroup.position.x) * 5 * deltaTime
             cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * 5 * deltaTime
 
+            cameraGroup.rotation.x += deltaTime * 0.0075
+            cameraGroup.rotation.y += deltaTime * 0.01
+
             // Renderer
             renderer.render(scene, camera)
 
@@ -179,9 +182,13 @@ const Canvas = () =>
     }, [])
 
     return(
-        <div className="fixed top-0 left-0 outline-0">
-            <canvas className="webgl"></canvas>
-        </div>
+        <>
+            <div className="m-0 p-0 overflow-hidden bg-backblue"> 
+                <div className="fixed top-0 left-0 outline-0">
+                    <canvas className="webgl"></canvas>
+                </div>
+            </div>
+        </>
     )
 }
 
