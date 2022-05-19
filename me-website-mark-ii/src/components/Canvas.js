@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 const Canvas = () => 
 {
@@ -41,7 +42,7 @@ const Canvas = () =>
         moon.position.x = planet.position.x + 2
         moon.position.y = planet.position.y + 2
 
-        scene.add(planet, moon)
+        // scene.add(planet, moon)
 
         /**
          * Particles
@@ -92,6 +93,12 @@ const Canvas = () =>
         const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1 ,100)
         camera.position.z = 6
         cameraGroup.add(camera)
+
+        // Orbit Control
+        const orbitControl = new OrbitControls(camera, canvas)
+        orbitControl.enableDamping = true
+        orbitControl.enableZoom = false
+        orbitControl.enablePan = false
 
         /**
          * Renderer
@@ -145,6 +152,10 @@ const Canvas = () =>
 
         const tick = () =>
         {
+            // Update Control
+            orbitControl.update()
+
+            // Time & Clock
             const elapsedTime = clock.getElapsedTime()
             const deltaTime = elapsedTime - previousTime
             previousTime = elapsedTime
