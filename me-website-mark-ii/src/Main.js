@@ -8,9 +8,9 @@ const Main = () =>
   return (
     <>
       <Canvas />
-      <Music />
+      {/* <Music /> */}
       {/* <Intro /> */}
-      <Mainmenu />
+      {/* <Mainmenu /> */}
     </>
   )
 }

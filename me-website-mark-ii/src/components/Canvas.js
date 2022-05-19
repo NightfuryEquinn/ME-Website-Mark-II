@@ -38,23 +38,23 @@ const Canvas = () =>
         planet.position.y = 0
 
         // Moon Orbit Position
-        moon.position.x = 2
-        moon.position.y = 2
+        moon.position.x = planet.position.x + 2
+        moon.position.y = planet.position.y + 2
 
-        // scene.add(planet, moon)
+        scene.add(planet, moon)
 
         /**
          * Particles
          */
         // Geometry
-        const particleCount = 200
+        const particleCount = 3000
         const positions = new Float32Array(particleCount * 3)
 
         for(let i = 0; i < particleCount; i++)
         {
-            positions[i * 3 + 0] = (Math.random() - 0.5) * 10
-            positions[i * 3 + 1] = 4 * 0.5 - Math.random() * 7.5
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 10
+            positions[i * 3 + 0] = (Math.random() - 0.5) * 20
+            positions[i * 3 + 1] = 4 * (0.5 - Math.random()) * 5
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 20
         }
 
         const particleGeometry = new THREE.BufferGeometry()
@@ -62,9 +62,10 @@ const Canvas = () =>
 
         // Material
         const particleMaterial = new THREE.PointsMaterial({
-            color: 0xb3c3d4,
+            color: 0x8EFBFA,
             sizeAttenuation: true,
-            size: 0.025
+            size: 0.025,
+            depthWrite: false
         })
 
         // Points
@@ -168,8 +169,10 @@ const Canvas = () =>
             cameraGroup.position.x += (parallaxX - cameraGroup.position.x) * 5 * deltaTime
             cameraGroup.position.y += (parallaxY - cameraGroup.position.y) * 5 * deltaTime
 
-            cameraGroup.rotation.x += deltaTime * 0.0075
-            cameraGroup.rotation.y += deltaTime * 0.01
+            // Animate Particles
+            const particleAngle = elapsedTime * 0.025
+            particle.rotation.x = Math.cos(particleAngle)
+            particle.rotation.y = Math.sin(particleAngle)
 
             // Renderer
             renderer.render(scene, camera)

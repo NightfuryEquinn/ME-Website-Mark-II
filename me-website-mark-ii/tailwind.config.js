@@ -15,8 +15,14 @@ module.exports = {
       },
       fontFamily: {
         orbit: ['Orbitron'],
-        space: ['"Space Mono"']
+        space: ['"Space Mono"'],
       },
+      boxShadow: {
+        musicShadow: '-12.5px 12.5px #0A1633, -15px 15px #F9E852, -10px 15px #F9E852, -15px 10px #F9E852',
+        neonblueShadow: '',
+        neonpinkShadow: '',
+        neonyellowShadow: '',
+      }
     },
   },
   plugins: [],
