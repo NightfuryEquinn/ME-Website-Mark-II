@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FaLink, FaInfoCircle, FaChartBar, FaProjectDiagram, FaSuitcase } from 'react-icons/fa'
 
 import Canvas from './components/Canvas'
-import Contentpage from './components/Contentpage';
+import Aboutmepage from './components/Aboutmepage';
 import Intro from './components/Intro'
 import Mainmenu from './components/Mainmenu';
 import Music from './components/Music';
@@ -42,11 +42,11 @@ const Main = () =>
   return (
     <>
       <Canvas />
-      {/* <Music /> */}
+      <Music />
       {/* <Intro /> */}
       {/* <Mainmenu menuSelection={menuSelection} /> */}
       {/* <Sidemenu menuSelection={menuSelection}/> */}
-      <Contentpage />
+      <Aboutmepage />
     </>
   )
 }

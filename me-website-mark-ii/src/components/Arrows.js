@@ -1,11 +1,11 @@
-import { FaArrowUp, FaArrowDown } from "react-icons/fa"
+import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa"
 
 const Arrows = () => {
   return (
     <>
         <div className="m-5 p-5 flex flex-col content-center justify-center relative">
-            <FaArrowUp className="my-7 text-textwhite cursor-pointer" size={40} />
-            <FaArrowDown className="my-7 text-textwhite cursor-pointer" size={40} />
+            <FaLongArrowAltUp className="my-10 text-textwhite cursor-pointer" size={50} />
+            <FaLongArrowAltDown className="my-10 text-textwhite cursor-pointer" size={50} />
         </div>
     </>
   )
