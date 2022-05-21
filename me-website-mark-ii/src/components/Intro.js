@@ -6,7 +6,7 @@ import Intrologo from "./Intrologo"
 const Intro = () => {
   return (
     <>
-        <div className="h-screen flex flex-col content-center justify-center relative">
+        <div className="h-screen flex flex-col content-center justify-center">
             <Intrologo />
             <Introdes />
             <Introclick />
