@@ -1,12 +1,12 @@
 import Arrows from "./Arrows"
 import Bars from "./Bars"
 import Contentlogo from "./Contentlogo"
-import Aboutmetext from "./Aboutmetext"
-import Aboutmetitle from "./Aboutmetitle"
-import Aboutmeflip from "./Aboutmeflip"
-import Aboutmeimage from "./Aboutmeimage"
+import Skilltitle from './Skilltitle'
+import Skilltext from './Skilltext'
+import Skillflip from './Skillflip'
+import Skillimage from './Skillimage'
 
-const Aboutmepage = () => {
+const Skillpage = () => {
   return (
     <>
       <div>
@@ -15,15 +15,15 @@ const Aboutmepage = () => {
         <div className="h-screen flex flex-row content-center justify-between items-center">
           <Arrows />
           <div className="mt-20 mb-10 mx-10 flex flex-col content-center justify-center">
-            <Aboutmetitle />
-            <Aboutmetext /> 
-            <Aboutmeflip />
+            <Skilltitle />
+            <Skilltext /> 
+            <Skillflip />
           </div>
-          <Aboutmeimage />
+          <Skillimage />
         </div>
       </div>
     </>
   )
 }
 
-export default Aboutmepage
+export default Skillpage

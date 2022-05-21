@@ -1,6 +1,6 @@
 import { FaLongArrowAltLeft, FaLongArrowAltRight, FaCircle } from "react-icons/fa"
 
-const Aboutmeflip = () => {
+const Projectflip = () => {
     // For Loop Circle Icons
     const count = 5
     const circles = []
@@ -13,7 +13,7 @@ const Aboutmeflip = () => {
         <div className="mx-10 flex flex-row content-center justify-center items-center relative">
             <FaLongArrowAltLeft className="mx-10 my-2 text-textwhite cursor-pointer" size={40} />
             {circles.map(() => (
-                <FaCircle className="mx-2 my-2 text-neonyellow cursor-pointer"/>
+                <FaCircle className="mx-2 my-2 text-neonpurple cursor-pointer"/>
             ))}
             <FaLongArrowAltRight className="mx-10 my-2 text-textwhite cursor-pointer" size={40} />
         </div>
@@ -21,4 +21,4 @@ const Aboutmeflip = () => {
   )
 }
 
-export default Aboutmeflip
+export default Projectflip

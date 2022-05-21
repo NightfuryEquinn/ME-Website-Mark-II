@@ -7,6 +7,8 @@ import Intro from './components/Intro'
 import Mainmenu from './components/Mainmenu';
 import Music from './components/Music';
 import Sidemenu from './components/Sidemenu';
+import Skillpage from './components/Skillpage';
+import Projectpage from './components/Projectpage';
 
 const Main = () => 
 {
@@ -46,7 +48,9 @@ const Main = () =>
       {/* <Intro /> */}
       {/* <Mainmenu menuSelection={menuSelection} /> */}
       {/* <Sidemenu menuSelection={menuSelection}/> */}
-      <Aboutmepage />
+      {/* <Aboutmepage /> */}
+      {/* <Skillpage /> */}
+      <Projectpage />
     </>
   )
 }
