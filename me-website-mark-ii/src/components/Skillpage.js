@@ -1,6 +1,4 @@
 import Arrows from "./Arrows"
-import Bars from "./Bars"
-import Contentlogo from "./Contentlogo"
 import Skilltitle from './Skilltitle'
 import Skilltext from './Skilltext'
 import Skillflip from './Skillflip'
@@ -10,8 +8,6 @@ const Skillpage = () => {
   return (
     <>
       <div>
-        <Bars />
-        <Contentlogo />
         <div className="h-screen flex flex-row content-center justify-between items-center">
           <Arrows />
           <div className="mt-20 mb-10 mx-10 flex flex-col content-center justify-center">
