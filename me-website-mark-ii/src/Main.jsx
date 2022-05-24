@@ -2,18 +2,6 @@ import { useState } from 'react';
 import { FaLink, FaInfoCircle, FaChartBar, FaProjectDiagram, FaSuitcase, FaLinkedin, FaGithub, FaEnvelope, FaInstagram, FaDiscord } from 'react-icons/fa'
 
 import Canvas from './components/Canvas'
-import Aboutmepage from './components/Aboutmepage';
-import Intro from './components/Intro'
-import Mainmenu from './components/Mainmenu';
-import Bars from './components/Bars';
-import Contentlogo from './components/Contentlogo';
-import Music from './components/Music';
-import Sidemenu from './components/Sidemenu';
-import Skillpage from './components/Skillpage';
-import Projectpage from './components/Projectpage';
-import Experiencepage from './components/Experiencepage';
-import Linktree from './components/Linktree';
-import Constellation from './components/Constellation';
 
 const Main = () => 
 {
@@ -88,18 +76,6 @@ const Main = () =>
   return (
     <>
       <Canvas />
-      <Music />
-      <Bars />
-      <Contentlogo />
-      {/* <Intro /> */}
-      {/* <Mainmenu menuSelection={menuSelection} /> */}
-      {/* <Sidemenu menuSelection={menuSelection}/> */}
-      {/* <Aboutmepage /> */}
-      {/* <Skillpage /> */}
-      {/* <Projectpage /> */}
-      {/* <Experiencepage /> */}
-      {/* <Linktree linktree={linktree}/> */}
-      <Constellation />
     </>
   )
 }

@@ -42,7 +42,7 @@ const Canvas = () =>
         moon.position.x = planet.position.x + 2
         moon.position.y = planet.position.y + 2
 
-        // scene.add(planet, moon)
+        scene.add(planet, moon)
 
         /**
          * Particles
